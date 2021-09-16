@@ -1,0 +1,386 @@
+﻿/* 
+    Custom Colors
+    #d35f49 - Ruby
+    #0f8800 - Green
+*/
+
+/*.bg-green {
+    --bs-bg-opacity: 1;
+    background-color: #0f8800 !important;
+}*/
+
+.nounderline {
+    text-decoration: none !important
+}
+
+.bg-green {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-green-rgb), var(--bs-bg-opacity)) !important;
+}
+
+/* Tables */
+
+section.tables {
+    margin-top: 80px;
+    border-top: 3px solid #eee !important;
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+    section.tables .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+.default-table {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    background-color: #f7f7f7;
+    padding: 50px;
+}
+
+.alternate-table {
+    margin-top: 50px;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    background-color: #f7f7f7;
+    padding: 50px;
+}
+
+    .alternate-table table td {
+        border-right: 2px solid #f7f7f7;
+    }
+
+        .alternate-table table td:last-child {
+            border-right: none;
+        }
+
+
+table {
+    width: 100%;
+}
+
+    table tbody tr {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 10px solid #f7f7f7;
+    }
+
+    table td {
+        padding: 20px;
+    }
+
+    table th {
+        padding: 0px 20px 20px 20px;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-align: left;
+        text-transform: capitalize;
+    }
+
+@media screen and (max-width: 980px) {
+
+    table th {
+        font-size: 15px;
+    }
+}
+
+table.alt {
+    border-collapse: separate;
+}
+
+    table.alt tbody tr td {
+        border: solid 1px;
+        border-left-width: 0;
+        border-top-width: 0;
+    }
+
+        table.alt tbody tr td:first-child {
+            border-left-width: 1px;
+        }
+
+    table.alt tbody tr:first-child td {
+        border-top-width: 1px;
+    }
+
+    table.alt thead {
+        border-bottom: 0;
+    }
+
+    table.alt tfoot {
+        border-top: 0;
+    }
+
+table tbody tr {
+    background-color: #e7e7e7;
+}
+
+    table tbody tr:nth-child(2n + 1) {
+        background-color: #fff;
+    }
+
+table th {
+    color: #4a4a4a;
+}
+
+ul.table-pagination {
+    padding: 0;
+    margin-top: 30px;
+    list-style: none;
+    text-align: center;
+}
+
+    ul.table-pagination li {
+        display: inline-block;
+    }
+
+        ul.table-pagination li:first-child {
+            float: left;
+        }
+
+        ul.table-pagination li:last-child {
+            float: right;
+        }
+
+        ul.table-pagination li a {
+            display: inline-block;
+            height: 40px;
+            background-color: #e7e7e7;
+            text-align: center;
+            line-height: 40px;
+            padding: 0px 15px;
+            min-width: 40px;
+            color: #4a4a4a;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: all 0.5s;
+        }
+
+            ul.table-pagination li a:hover,
+            ul.table-pagination li.active a {
+                background-color: #535ba0;
+                color: #fff;
+            }
+
+
+/* Forms */
+
+/* Buttons */
+section.buttons {
+    margin-top: 90px;
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+    section.buttons .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+.filled-rectangle-button {
+    margin-bottom: 30px;
+}
+
+    .filled-rectangle-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #fff;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,1);
+    }
+
+        .filled-rectangle-button a:hover {
+            color: #535ba0;
+            background-color: rgba(83,91,160,0.25);
+        }
+
+.border-rectangle-button {
+    margin-bottom: 30px;
+}
+
+    .border-rectangle-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #535ba0;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,0.0);
+    }
+
+        .border-rectangle-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,1);
+        }
+
+.filled-radius-button {
+    margin-bottom: 30px;
+}
+
+    .filled-radius-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #fff;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,1);
+        border-radius: 5px;
+    }
+
+        .filled-radius-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,0.25);
+        }
+
+.border-radius-button {
+    margin-bottom: 30px;
+}
+
+    .border-radius-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #535ba0;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,0.0);
+        border-radius: 5px;
+    }
+
+        .border-radius-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,1);
+        }
+
+.filled-rounded-button {
+    margin-bottom: 30px;
+}
+
+    .filled-rounded-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #fff;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,1);
+        border-radius: 20px;
+    }
+
+        .filled-rounded-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,0.25);
+        }
+
+.border-rounded-button {
+    margin-bottom: 30px;
+}
+
+    .border-rounded-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #535ba0;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,0.0);
+        border-radius: 20px;
+    }
+
+        .border-rounded-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,1);
+        }
+
+.filled-icon-button {
+    margin-bottom: 30px;
+}
+
+    .filled-icon-button i {
+        margin-right: 8px;
+    }
+
+    .filled-icon-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #fff;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,1);
+        border-radius: 20px;
+    }
+
+        .filled-icon-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,0.25);
+        }
+
+.border-icon-button {
+    margin-bottom: 30px;
+}
+
+    .border-icon-button i {
+        margin-right: 8px;
+    }
+
+    .border-icon-button a {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        color: #535ba0;
+        border: 2px solid #535ba0;
+        transition: all 0.5s;
+        background-color: rgba(83,91,160,0.0);
+        border-radius: 20px;
+    }
+
+        .border-icon-button a:hover {
+            color: #fff;
+            background-color: rgba(83,91,160,1);
+        }
