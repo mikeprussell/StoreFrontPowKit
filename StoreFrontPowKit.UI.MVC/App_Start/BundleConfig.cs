@@ -24,7 +24,12 @@ namespace StoreFrontPowKit.UI.MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/css/custom.css",
+                      "~/Content/css/styles.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/js").Include(
+                      "~/Content/js/scripts.js"));
         }
     }
 }
