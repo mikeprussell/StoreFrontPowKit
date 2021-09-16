@@ -13,6 +13,7 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
     {
         public short CategoryID { get; set; }
 
+        [Required]
         [StringLength(15, ErrorMessage = "*Cannot exceed 15 characters")]
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
@@ -214,11 +215,11 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         [StringLength(24, ErrorMessage = "*Cannot exceed 24 characters")]
         public string Phone { get; set; }
 
-        [MetadataType(typeof(SupplierMetadata))]
-        public partial class Supplier
-        {
+    }
 
-        }
+    [MetadataType(typeof(SupplierMetadata))]
+    public partial class Supplier
+    {
 
     }
 
