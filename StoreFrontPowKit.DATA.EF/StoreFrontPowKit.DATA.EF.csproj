@@ -62,6 +62,7 @@
     <Compile Include="Employee.cs">
       <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\StoreFrontPowKitMetadata.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
     </Compile>
