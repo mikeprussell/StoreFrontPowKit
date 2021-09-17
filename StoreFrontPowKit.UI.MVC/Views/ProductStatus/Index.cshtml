@@ -23,9 +23,18 @@
             @Html.DisplayFor(modelItem => item.StatusName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductStatusID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductStatusID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductStatusID })
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                <span>@Html.ActionLink("Edit", "Edit", new { id = item.ProductStatusID }) |</span>
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.ProductStatusID })
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductStatusID })
+            }
         </td>
     </tr>
 }

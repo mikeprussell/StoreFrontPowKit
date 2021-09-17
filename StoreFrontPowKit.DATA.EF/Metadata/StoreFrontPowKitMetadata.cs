@@ -132,7 +132,7 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         public int ProductID { get; set; }
 
         [Required(ErrorMessage = "*Product Name is required")]
-        [StringLength(15, ErrorMessage = "*Cannot exceed 50 characters")]
+        [StringLength(50, ErrorMessage = "*Cannot exceed 50 characters")]
         [Display(Name = "Product Name")]
         public string ProductName { get; set; }
 
@@ -146,12 +146,14 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         [Display(Name = "Category ID")]
         public short CategoryID { get; set; }
 
+        [Display(Name = "Unit Price")]
         [DisplayFormat(DataFormatString = "{0:c}")]
         public Nullable<decimal> UnitPrice { get; set; }
 
         [Display(Name = "Product Status")]
         public Nullable<int> ProductStatusID { get; set; }
 
+        [Display(Name = "Product Image")]
         public string ProductImage { get; set; }
 
     }
@@ -210,6 +212,7 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         public string City { get; set; }
 
         [StringLength(5, ErrorMessage = "*Cannot exceed 5 characters")]
+        [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
 
         [StringLength(24, ErrorMessage = "*Cannot exceed 24 characters")]

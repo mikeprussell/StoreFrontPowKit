@@ -15,12 +15,14 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: Customers
+        [Authorize(Roles = "Admin, Employee, Operations Employee")]
         public ActionResult Index()
         {
             return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5
+        [Authorize(Roles = "Admin, Employee, Operations Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Customers/Create
+        [Authorize(Roles = "Admin, Operations Employee")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +62,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Customers/Edit/5
+        [Authorize(Roles = "Admin, Operations Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Customers/Delete/5
+        [Authorize(Roles = "Admin, Operations Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

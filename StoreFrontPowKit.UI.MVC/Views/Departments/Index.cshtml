@@ -23,9 +23,18 @@
             @Html.DisplayFor(modelItem => item.DepartmentName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DepartmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DepartmentID })
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                <span>@Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |</span>
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.DepartmentID })
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })
+            }
         </td>
     </tr>
 }

@@ -15,6 +15,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: Employees
+        [Authorize(Roles = "Admin, HR Employee")]
         public ActionResult Index()
         {
             var employees = db.Employees.Include(e => e.Department);
@@ -22,6 +23,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Employees/Details/5
+        [Authorize(Roles = "Admin, HR Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Employees/Create
+        [Authorize(Roles = "Admin, HR Employee")]
         public ActionResult Create()
         {
             ViewBag.DeptID = new SelectList(db.Departments, "DepartmentID", "DepartmentName");
@@ -62,6 +65,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Employees/Edit/5
+        [Authorize(Roles = "Admin, HR Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Employees/Delete/5
+        [Authorize(Roles = "Admin, HR Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

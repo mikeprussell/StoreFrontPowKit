@@ -53,9 +53,18 @@
             @Html.DisplayFor(modelItem => item.Phone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                <span>@Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |</span>
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerID })
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+            }
         </td>
     </tr>
 }

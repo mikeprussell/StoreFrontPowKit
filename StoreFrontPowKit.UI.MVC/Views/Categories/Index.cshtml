@@ -1,33 +1,57 @@
 ﻿@model IEnumerable<StoreFrontPowKit.DATA.EF.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cateogry";
 }
 
-<h2>Index</h2>
+<div class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7 py-2">
+                <h2 class="py-2">@ViewBag.Title</h2>
+                <h4>Product</h4>
+                <hr />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th></th>
-    </tr>
+                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                {
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
-        </td>
-    </tr>
-}
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryName)
+                        </th>
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                                {
+                                    <span>@Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |</span>
+                                }
+
+                                @Html.ActionLink("Details", "Details", new { id = item.CategoryID })
+
+                                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                                {
+                                    @:|
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
