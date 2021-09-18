@@ -1,10 +1,28 @@
 ﻿@using Microsoft.AspNet.Identity
+@using StoreFrontPowKit.DATA.EF
+
+@{
+    //Added to be able to Substring() Username below so full email address is not shown
+    //int location = User.Identity.GetUserName().IndexOf("@");
+
+    StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
+    string userId = User.Identity.GetUserId();
+
+    UserDetail currentUser = db.UserDetails.Find(userId);
+
+    string userFN = "Guest";
+
+    if (currentUser != null)
+    {
+        userFN = currentUser.FirstName;
+    }
+}
+
 @if (Request.IsAuthenticated)
 {
 
-
     <li class="nav-item">
-        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+        @Html.ActionLink("Hello " + userFN + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link" })
     </li>
     <li>
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav-link" }))
@@ -18,7 +36,7 @@
 
 else
 {
-    <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", null, new { @class="nav-link" })</li>
-    <li class="nav-item">@Html.ActionLink("Log in","Login", "Account", null, new { @class="nav-link" })</li>
+    <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })</li>
+    <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", null, new { @class = "nav-link" })</li>
 
 }

@@ -15,7 +15,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: Categories
-        [Authorize(Roles = "Admin, Employee, Operations Employee")]
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Categories.ToList());

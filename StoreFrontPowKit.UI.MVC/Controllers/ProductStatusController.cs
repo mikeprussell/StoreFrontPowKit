@@ -15,14 +15,14 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: ProductStatus
-        [Authorize(Roles = "Admin, Employee, Operations Employee")]
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.ProductStatuses.ToList());
         }
 
         // GET: ProductStatus/Details/5
-        [Authorize(Roles = "Admin, Employee, Operations Employee")]
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)

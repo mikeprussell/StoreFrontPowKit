@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using StoreFrontPowKit.DATA.EF;
 
 namespace StoreFrontPowKit.UI.MVC.Controllers
 {
@@ -153,11 +154,30 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
+
+                    #region Create UserDetails Record upon Registration
+                    //Instantiate DB object so we can save the record to the db
+                    StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
+
+
+                    //Create UserDetails object and assign values
+                    UserDetail ud = new UserDetail();
+                    ud.UserId = user.Id;
+                    ud.FirstName = model.FirstName;
+                    ud.LastName = model.LastName;
+
+                    db.UserDetails.Add(ud);
+                    db.SaveChanges();
+
+                    return View("Login");
+
+                    #endregion
+
                 }
                 AddErrors(result);
             }

@@ -1,74 +1,85 @@
 ﻿@model StoreFrontPowKit.DATA.EF.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = $"{Model.ProductName}";
 }
 
-<h2>Details</h2>
+<div class="mb-4 mt-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-7">
+                <h2 class="py-2">@ViewBag.Title</h2>
+                <h4>Details</h4>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UnitPrice)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.UnitPrice)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Category.CategoryName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Category.CategoryName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductStatus.StatusName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductStatus.StatusName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Supplier.CompanyName)
+                    </dd>
+                </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Supplier.CompanyName)
-        </dt>
+                @using (Html.BeginForm("AddToCart", "ShoppingCart", new { bookID = Model.BookID }, FormMethod.Post, new { @class = "text-center" }))
+                {
+                    <span class="label">Quantity: </span>
+                    @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width: 50px; display: inline;" })
+                    <input type="submit" value="Add To Cart" class="btn btn-primary" />
+                }
 
-        <dd>
-            @Html.DisplayFor(model => model.Supplier.CompanyName)
-        </dd>
+            </div>
+            <div class="col-md-5">
+                <img src="~/Content/images/products/@Model.ProductImage" alt="Product image" title="@Model.ProductName" />
+            </div>
 
-    </dl>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+

@@ -1,0 +1,102 @@
+﻿@model Dictionary<int, StoreFrontPowKit.UI.MVC.Models.CartItemViewModel>
+
+@{
+    ViewBag.Title = "Shopping Cart";
+
+    //local variables for calcs on the page
+    decimal? cartTotal = 0;
+    int totalCountOfItems = 0;
+}
+
+<div class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md py-2">
+                <p class="pull-left mt-4">
+                    @Html.ActionLink("Shop Snowboard Gear", "AllProducts", "Home", null, new { @class = "btn btn-info" })
+                </p>
+
+                <h2>@ViewBag.Title</h2>
+
+                @if (Model.Count == 0)
+                {
+                    <p class="alert alert-warning">
+                        There are no items in your cart.
+                    </p>
+                }
+                else
+                {
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Product
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/Content/imgages/products/t_@item.Value.Product.ProductImage" alt="Product image @item.Value.Product.ProductName" />
+                                </td>
+                                <td>
+
+                                    @* V1 -> just showing the quantity *@
+                                    @*@item.Value.Qty*@
+
+                                    @* V2 -> showing the quantity in a textbox that allows us to update *@
+                                    @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("bookId", item.Key)
+                                        @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", style = "max-width: 5px, display: inline;" })
+                                        <input type="submit" value="Update Quantity" class="center-btn btn-info" />
+                                    }
+
+                                    @{
+                                        //Calculate the running total of items in the cart
+                                        totalCountOfItems += item.Value.Qty;
+                                    }
+                                </td>
+                                <td>
+                                    @item.Value.Product.ProductName
+                                </td>
+                                <td>
+                                    @string.Format($"{item.Value.Product.UnitPrice:c}")
+                                </td>
+                                <td>
+                                    @{
+                                        //Calculate line total & update running total variable
+                                        decimal? lineTotal = item.Value.Qty * item.Value.Product.UnitPrice;
+                                        cartTotal += item.Value.Qty * item.Value.Product.UnitPrice;
+                                        cartTotal += lineTotal;
+                                    }
+
+                                    @string.Format($"{lineTotal:c}")
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Remove From Cart", "RemoveFromCart", new { id = item.Key })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <p class="alert alert-success text-center">
+                        You have @totalCountOfItems item@(totalCountOfItems == 1 ? "" : "s") in your cart.
+                        Your total before taxes and shipping is @string.Format($"{cartTotal:c}")
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

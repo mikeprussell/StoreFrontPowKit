@@ -141,6 +141,8 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                //FirstName = user.FirstName,
+                //LastName = user.LastName,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -166,6 +168,8 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                //user.FirstName = editUser.FirstName;
+                //user.LastName = editUser.LastName;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 

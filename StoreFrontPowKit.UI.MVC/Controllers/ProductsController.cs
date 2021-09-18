@@ -17,7 +17,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: Products
-        [Authorize(Roles = "Admin, Employee, Operations Employee")]
+        [Authorize]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.ProductStatus);
@@ -25,7 +25,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         // GET: Products/Details/5
-        [Authorize(Roles = "Admin, Employee, Operations Employee")]
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)

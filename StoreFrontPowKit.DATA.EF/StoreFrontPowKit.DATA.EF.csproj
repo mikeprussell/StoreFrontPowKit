@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
     </Compile>
@@ -86,6 +89,9 @@
       <DependentUpon>StoreFrontPowKitModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
+      <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetail.cs">
       <DependentUpon>StoreFrontPowKitModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

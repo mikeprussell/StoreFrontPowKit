@@ -17,12 +17,22 @@
                     <br />
                     <h4>Create a new account</h4>
                     <hr>
-                    <div class="my-5">
+                    <div class="by-5">
                         @Html.ValidationSummary("", new { @class = "text-danger" })
                         <form id="contactForm">
                             <div class="form-floating">
-                                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @id = "email", placeholder = "Email" } } )
+                                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @id = "email", placeholder = "Email" } })
                                 <label for="email">Email</label>
+                                <br />
+                            </div>
+                            <div class="form-floating">
+                                @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "firstname", placeholder = "First Name" } })
+                                <label for="firstname">First Name</label>
+                                <br />
+                            </div>
+                            <div class="form-floating">
+                                @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", @id = "lastname", placeholder = "Last Name" } })
+                                <label for="lastname">Last Name</label>
                                 <br />
                             </div>
                             <div class="form-floating">
