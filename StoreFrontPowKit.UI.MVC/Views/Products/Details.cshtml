@@ -61,7 +61,7 @@
                     </dd>
                 </dl>
 
-                @using (Html.BeginForm("AddToCart", "ShoppingCart", new { bookID = Model.BookID }, FormMethod.Post, new { @class = "text-center" }))
+                @using (Html.BeginForm("AddToCart", "ShoppingCart", new { productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center" }))
                 {
                     <span class="label">Quantity: </span>
                     @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width: 50px; display: inline;" })

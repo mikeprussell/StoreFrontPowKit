@@ -57,7 +57,7 @@
                                     @* V2 -> showing the quantity in a textbox that allows us to update *@
                                     @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
                                     {
-                                        @Html.Hidden("bookId", item.Key)
+                                        @Html.Hidden("productId", item.Key)
                                         @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", style = "max-width: 5px, display: inline;" })
                                         <input type="submit" value="Update Quantity" class="center-btn btn-info" />
                                     }
