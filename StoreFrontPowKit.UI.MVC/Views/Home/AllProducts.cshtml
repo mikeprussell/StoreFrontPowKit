@@ -24,7 +24,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="">View options</a></div>
                     </div>
                 </div>
             </div>
@@ -204,68 +204,6 @@
                         <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                     </div>
 
-                    <table class="table">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ProductImage)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ProductName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.UnitPrice)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Category.CategoryName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Supplier.CompanyName)
-                            </th>
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <img src="~/Content/images/products/t_@item.ProductImage" alt="Product image" title="@item.ProductName" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UnitPrice)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductStatus.StatusName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
-                                </td>
-                                <td>
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
-                                    {
-                                        <span>@Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |</span>
-                                    }
-
-                                    @Html.ActionLink("Details", "Details", new { id = item.ProductID })
-
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
-                                    {
-                                        @:|
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
-                                    }
-                                </td>
-                            </tr>
-                        }
-
-                    </table>
                 </div>
             </div>
         </div>

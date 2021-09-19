@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StoreFrontPowKit.DATA.EF.Product>
+
+@{
+    ViewBag.Title = "All Products";
+}
+
+<section class="py-5">
+    <h2 class="text-center">All Products</h2>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img src="~/Content/images/products/t_@item.ProductImage" style="max-height: 250px; max-width: 250px;" alt="Product image" title="@item.ProductName" />
+                        <hr />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                                <!-- Product price-->
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                @Html.ActionLink("View option", "Details", "Products", new { id = item.ProductID }, new { @class = "btn btn-outline-dark mt-auto" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
