@@ -21,12 +21,6 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult AllProducts()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ActionResult IndividualProduct()
         {
             return View();

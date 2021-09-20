@@ -31,6 +31,20 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
             return View(products.ToList());
         }
 
+        // GET: All Products
+        public ActionResult AllProducts()
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.ProductStatus);
+            return View(products.ToList());
+        }
+
+        // GET: Individual Products
+        public ActionResult IndividualProduct()
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.ProductStatus);
+            return View(products.ToList());
+        }
+
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {

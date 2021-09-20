@@ -70,12 +70,10 @@ namespace StoreFrontPowKit.UI.MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [EmailAddress]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [EmailAddress]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 

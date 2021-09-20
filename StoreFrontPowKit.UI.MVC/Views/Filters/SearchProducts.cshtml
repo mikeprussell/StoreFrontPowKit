@@ -1,7 +1,9 @@
-﻿@model IEnumerable<StoreFrontPowKit.DATA.EF.Product>
+﻿@*@model IEnumerable<StoreFrontPowKit.DATA.EF.Product>*@
+@model PagedList.IPagedList<StoreFrontPowKit.DATA.EF.Product>
+@using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "Product List";
 }
 
 <div class="mb-4">
@@ -10,6 +12,18 @@
             <div class="col-md py-2">
                 <h2 class="py-2">@ViewBag.Title</h2>
                 <hr />
+
+                <div class="row">
+                    @using (Html.BeginForm("SearchProducts", "Filters", FormMethod.Get))
+                    {
+                        <p>
+                            Search by Product Name: @Html.TextBox("SearchString", ViewBag.SearchString as string)
+                            <input type="submit" value="Search" />
+                        </p>
+                    }
+                </div>
+
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
                 {
@@ -21,22 +35,22 @@
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProductImage)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProductName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.UnitPrice)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitPrice)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Category.CategoryName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Category.CategoryName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductStatus.StatusName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Supplier.CompanyName)
                         </th>
                     </tr>
 
@@ -79,6 +93,9 @@
                     }
 
                 </table>
+
+                @Html.PagedListPager(Model, page => Url.Action("SearchProducts", new { page, searchString = ViewBag.SearchString }) + "#products")
+
             </div>
         </div>
     </div>
