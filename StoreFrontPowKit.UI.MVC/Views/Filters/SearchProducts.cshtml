@@ -16,14 +16,14 @@
                 <div class="row">
                     @using (Html.BeginForm("SearchProducts", "Filters", FormMethod.Get))
                     {
-                        <p>
+                        <div>
                             Search by Product Name: @Html.TextBox("SearchString", ViewBag.SearchString as string)
                             <input type="submit" value="Search" />
-                        </p>
+                            <div class="d-flex flex-row-reverse">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</div>
+                        </div>
                     }
                 </div>
 
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
                 {
@@ -94,7 +94,11 @@
 
                 </table>
 
-                @Html.PagedListPager(Model, page => Url.Action("SearchProducts", new { page, searchString = ViewBag.SearchString }) + "#products")
+                <div class="d-flex flex-row-reverse">
+                    @Html.PagedListPager(Model, page => Url.Action("SearchProducts", new { page, searchString = ViewBag.SearchString }))
+                </div>
+
+                @*"#products"*@
 
             </div>
         </div>

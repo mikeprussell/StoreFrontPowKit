@@ -50,6 +50,7 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         public string City { get; set; }
 
         [StringLength(5, ErrorMessage = "*Cannot exceed 5 characters")]
+        [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
 
         [StringLength(24, ErrorMessage = "*Cannot exceed 24 characters")]
@@ -71,6 +72,7 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         public short DepartmentID { get; set; }
 
         [StringLength(15, ErrorMessage = "*Cannot exceed 15 characters")]
+        [Display(Name = "Department Name")]
         public string DepartmentName { get; set; }
     }
 
@@ -104,8 +106,13 @@ namespace StoreFrontPowKit.DATA.EF//.Metadata
         [Display(Name = "Department ID")]
         public short DeptID { get; set; }
 
+        [Display(Name = "Has Direct Report")]
         public bool HasDirectReport { get; set; }
+
+        [Display(Name = "Direct Report ID")]
         public Nullable<int> DirectReportID { get; set; }
+
+        [Display(Name = "Birth Date")]
         public Nullable<System.DateTime> BirthDate { get; set; }
 
         [StringLength(24, ErrorMessage = "*Cannot exceed 24 characters")]

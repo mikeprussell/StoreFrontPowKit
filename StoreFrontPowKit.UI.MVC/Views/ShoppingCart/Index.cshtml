@@ -11,8 +11,8 @@
 <div class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="mt-4">
-                @Html.ActionLink("Shop Snowboard Gear", "AllProducts", "Home", null, new { @class = "btn btn-info" })
+            <div class="mt-4 d-flex flex-row-reverse">
+                @Html.ActionLink("Shop Snowboard Gear", "SearchProducts", "Filters", null, new { @class = "btn btn-info" })
             </div>
             <div class="col-md py-2">
                 <h2>@ViewBag.Title</h2>
@@ -28,6 +28,9 @@
                     <table class="table">
                         <tr>
                             <th>
+
+                            </th>
+                            <th>
                                 Product
                             </th>
                             <th>
@@ -39,53 +42,51 @@
                             <th>
                                 Total
                             </th>
-                            <th></th>
+                            <th>
+
+                            </th>
                         </tr>
 
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    <img src="~/Content/imgages/products/t_@item.Value.Product.ProductImage" alt="Product image @item.Value.Product.ProductName" />
-                                </td>
-                                <td>
+                        <tr>
+                            <td>
+                                <img src="~/Content/imgages/products/t_@item.Value.Product.ProductImage" alt="Product image @item.Value.Product.ProductName" />
+                            </td>
+                            <td>
+                                @item.Value.Product.ProductName
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+                                {
+                                    @Html.Hidden("productId", item.Key)
+                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", style = "max-width: 5px, display: inline;" })
+                                    <input type="submit" value="Update Quantity" class="center-btn btn-info mt-2" />
+                                }
 
-                                    @* V1 -> just showing the quantity *@
-                                    @*@item.Value.Qty*@
+                                @{
+                                    //Calculate the running total of items in the cart
+                                    totalCountOfItems += item.Value.Qty;
+                                }
+                            </td>
 
-                                    @* V2 -> showing the quantity in a textbox that allows us to update *@
-                                    @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("productId", item.Key)
-                                        @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", style = "max-width: 5px, display: inline;" })
-                                        <input type="submit" value="Update Quantity" class="center-btn btn-info" />
-                                    }
+                            <td>
+                                @string.Format($"{item.Value.Product.UnitPrice:c}")
+                            </td>
+                            <td>
+                                @{
+                                    //Calculate line total & update running total variable
+                                    decimal? lineTotal = item.Value.Qty * item.Value.Product.UnitPrice;
+                                    lineTotal = item.Value.Qty * item.Value.Product.UnitPrice;
+                                    cartTotal += lineTotal;
+                                }
 
-                                    @{
-                                        //Calculate the running total of items in the cart
-                                        totalCountOfItems += item.Value.Qty;
-                                    }
-                                </td>
-                                <td>
-                                    @item.Value.Product.ProductName
-                                </td>
-                                <td>
-                                    @string.Format($"{item.Value.Product.UnitPrice:c}")
-                                </td>
-                                <td>
-                                    @{
-                                        //Calculate line total & update running total variable
-                                        decimal? lineTotal = item.Value.Qty * item.Value.Product.UnitPrice;
-                                        cartTotal += item.Value.Qty * item.Value.Product.UnitPrice;
-                                        cartTotal += lineTotal;
-                                    }
-
-                                    @string.Format($"{lineTotal:c}")
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Remove From Cart", "RemoveFromCart", new { id = item.Key })
-                                </td>
-                            </tr>
+                                @string.Format($"{lineTotal:c}")
+                            </td>
+                            <td>
+                                @Html.ActionLink("Remove From Cart", "RemoveFromCart", new { id = item.Key })
+                            </td>
+                        </tr>
                         }
 
                     </table>

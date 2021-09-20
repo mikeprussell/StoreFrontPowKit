@@ -80,7 +80,7 @@
                             <!-- Save Button -->
                             <button type="submit" value="Save" class="btn btn-primary" id="submitButton">Save</button>
                             |
-                            @Html.ActionLink("Back to List", "Index")
+                            @Html.ActionLink("Back to List", "SearchProducts")
 
                         </div>
                     </div>
@@ -89,3 +89,8 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
