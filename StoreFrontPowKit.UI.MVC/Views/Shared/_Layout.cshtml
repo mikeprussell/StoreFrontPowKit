@@ -56,6 +56,7 @@
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index", "Departments")">Departments</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("SearchProducts", "Filters")">Product List</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index", "ProductStatus")">Product Status</a></li>
+                                    <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index", "Suppliers")">Suppliers</a></li>
 
                                     <!-- Human Resources Navigation-->
                                     <li><hr class="dropdown-divider" /></li>
@@ -77,6 +78,7 @@
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index","Departments")">Departments</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("SearchProducts","Filters")">Product List</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index","ProductStatus")">Product Status</a></li>
+                                    <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index", "Suppliers")">Suppliers</a></li>
                                 </ul>
                             </li>
                         }
@@ -100,6 +102,7 @@
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index","Categories")">Categories</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("SearchProducts","Filters")">Product List</a></li>
                                     <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index","ProductStatus")">Product Status</a></li>
+                                    <li class="dropdown-item"><a class="nav-link" href="@Url.Action("Index", "Suppliers")">Suppliers</a></li>
                                 </ul>
                             </li>
                         }
@@ -140,8 +143,8 @@
 
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
-                        <a class="text-decoration-none text-dark" href="@Url.Action("Index", "ShoppingCart")">
-                            Cart
+                        <a class="text-decoration-none cart-color" href="@Url.Action("Index", "ShoppingCart")">
+                        Cart
                         </a>
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
@@ -157,7 +160,7 @@
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; POWKIT 2021</p></div>
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; <i>POWKIT</i> 2021</p></div>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

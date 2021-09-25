@@ -1,7 +1,7 @@
 ﻿/* 
     Custom Colors
     #d35f49 - Ruby
-    #0f8800 - Green
+    #9cd74e - Green
 */
 
 /*.bg-green {
@@ -9,17 +9,20 @@
     background-color: #0f8800 !important;
 }*/
 
-.home-page{
+.home-page {
     max-width: 100%;
 }
 
-.nounderline {
-    text-decoration: none !important
+.cart-color {
+    color: #9cd74e;
 }
 
-.bg-green {
-    --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-green-rgb), var(--bs-bg-opacity)) !important;
+    .cart-color:hover {
+        color: #9cd74e;
+    }
+
+.nounderline {
+    text-decoration: none !important
 }
 
 /* Tables */
