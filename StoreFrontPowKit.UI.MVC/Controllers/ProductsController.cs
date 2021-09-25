@@ -17,7 +17,6 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         private StoreFrontPowKitEntities db = new StoreFrontPowKitEntities();
 
         // GET: Products
-        [Authorize]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.ProductStatus);

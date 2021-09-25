@@ -61,23 +61,32 @@
                     </dd>
                 </dl>
 
-                @using (Html.BeginForm("AddToCart", "ShoppingCart", new { productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center" }))
+            </div>
+            <div class="col-md-5">
+                <img src="~/Content/images/products/@Model.ProductImage" alt="Product image" title="@Model.ProductName" />
+            </div>
+            <div class="row">
+                @using (Html.BeginForm("AddToCart", "ShoppingCart", new { productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center float-end" }))
                 {
                     <span class="label">Quantity: </span>
                     @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width: 50px; display: inline;" })
                     <input type="submit" value="Add To Cart" class="btn btn-primary" />
                 }
 
+                @if (Request.IsAuthenticated)
+                {
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                }
             </div>
-            <div class="col-md-5">
-                <img src="~/Content/images/products/@Model.ProductImage" alt="Product image" title="@Model.ProductName" />
-            </div>
-
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
-
         </div>
     </div>
 </div>

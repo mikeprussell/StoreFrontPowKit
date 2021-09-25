@@ -9,6 +9,10 @@
     background-color: #0f8800 !important;
 }*/
 
+.home-page{
+    max-width: 100%;
+}
+
 .nounderline {
     text-decoration: none !important
 }
