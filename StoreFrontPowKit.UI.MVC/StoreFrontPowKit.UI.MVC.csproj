@@ -201,7 +201,6 @@
     <Compile Include="Utilities\ImageUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\favicon.ico" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\PagedList.css" />
     <Content Include="Content\css\styles.css" />
@@ -211,7 +210,7 @@
     <Content Include="Content\images\products\NoImage.png" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="favicon.io.png" />
+    <Content Include="Content\assets\favicon.ico" />
     <Content Include="_Archive\assets\favicon.ico" />
     <Content Include="_Archive\css\styles.css" />
     <Content Include="_Archive\index.html" />
