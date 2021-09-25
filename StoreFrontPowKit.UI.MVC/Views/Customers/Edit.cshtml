@@ -9,7 +9,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7 py-2">
                 <h2 class="py-2">@ViewBag.Title</h2>
-                <h4>Customer</h4>
+                <h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
                 <hr />
 
                 @using (Html.BeginForm())

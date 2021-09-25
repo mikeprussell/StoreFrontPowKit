@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<StoreFrontPowKit.DATA.EF.Product>
+
+@{
     ViewBag.Title = "Home";
 }
 
@@ -7,7 +9,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h5 class="display-5 fw-bolder">2022 Snowboard Gear Available</h5>
-            <a class="lead fw-normal text-white-50 mb-0 nounderline" href="@Url.Action("IndividualProduct","Home")">PowKit Latest Arrival</a>
+            <a class="lead fw-normal text-white-50 mb-0 nounderline" href="@Url.Action("IndividualProduct","Products")">PowKit Latest Arrival</a>
         </div>
     </div>
 </header>
@@ -17,7 +19,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="col mb-5">
 
-                @*@Html.Partial("AllProductsIndex")*@
+                @*@RenderPage("~/Views/Products/AllProducts.cshtml")*@
 
                 <div class="card h-100">
                     <!-- Product image-->

@@ -4,77 +4,83 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="mb-4 mt-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-7">
+                <h2 class="py-2">@ViewBag.Title</h2>
+                <h3>Are you sure you want to delete @Html.DisplayFor(model => model.ProductName)?</h3>
+                <hr />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UnitPrice)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.UnitPrice)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductImage)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductImage)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Category.CategoryName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Category.CategoryName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductStatus.StatusName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductStatus.StatusName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductStatus.StatusName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Supplier.CompanyName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Supplier.CompanyName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Supplier.CompanyName)
+                    </dd>
 
-    </dl>
+                </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                    <div class="form-actions">
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
         </div>
-    }
+    </div>
 </div>
