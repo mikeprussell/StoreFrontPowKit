@@ -6,6 +6,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>PowKit Store Front</title>
+    <!-- AJAX -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="~/Content/assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -22,7 +24,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                <img src="~/Content/images/powkit_logo.png" alt="POWKIT Logo" style="max-height:35px"/>
+                <img src="~/Content/images/powkit_logo.png" alt="POWKIT Logo" style="max-height:35px" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,7 +36,7 @@
                             <li><a class="dropdown-item" href="@Url.Action("AllProducts","Products")">All Products</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("SearchProducts","Filters")">Search Products</a></li>
                             @*<li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="@Url.Action("IndividualProduct","Products")">Popular Item</a></li>*@
+                                <li><a class="dropdown-item" href="@Url.Action("IndividualProduct","Products")">Popular Item</a></li>*@
                             @*<li><a class="dropdown-item" href="@Url.Action("IndividualProduct","Products")">New Arrival</a></li>*@
                         </ul>
                     </li>
@@ -144,7 +146,7 @@
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         <a class="text-decoration-none cart-color" href="@Url.Action("Index", "ShoppingCart")">
-                        Cart
+                            Cart
                         </a>
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
@@ -167,7 +169,22 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 
-    @RenderSection("scripts", false)
+    <!-- jQuery Plugins -->
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+
+    <!--jQuery DataTables-->
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+
+    <!--ADDEDjQuery UI CDN-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- ADDED jQuery Ajax CDN-->
+    <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
+
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>
