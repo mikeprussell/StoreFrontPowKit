@@ -12,7 +12,7 @@
                 <h4>@Html.DisplayFor(model => model.CategoryName)</h4>
                 <hr />
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("AjaxEdit", "Categories", FormMethod.Post, new { id = "CategoryEditForm" }))
                 {
                     @Html.AntiForgeryToken()
 
