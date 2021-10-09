@@ -34,7 +34,7 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
             #region Search
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(x => x.ProductName.Contains(searchString)).ToList();
+                products = products.Where(x => x.ProductName.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
             ViewBag.SearchString = searchString;
