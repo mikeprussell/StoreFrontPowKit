@@ -14,6 +14,10 @@
                 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
                 {
                     <button id="toggleCategoryCreate" class="btn btn-primary mb-2">Create</button>
+
+                    <div id="CategoryCreate">
+                        @Html.Partial("CategoryCreate", new StoreFrontPowKit.DATA.EF.Category())
+                    </div>
                 }
 
                 <table class="table" id="CategoriesTable">
@@ -53,14 +57,11 @@
                             </td>
                         </tr>
                     }
-
                 </table>
             </div>
         </div>
     </div>
 </div>
-
-<div id="CategoryDetails"></div>
 
 @section scripts{
     <script>
@@ -109,7 +110,6 @@
             });
         });
 
-
         // AJAX - Update
         var originalContent = null;
 
@@ -143,17 +143,18 @@
                 data: formData,
                 dataType: "json",
                 success: function (data) {
-                    //changed msg
                     $('#MessageContent').html("<div class='alert alert-success'>Your Record was Successfully Updated.</div>");
                     $('#CategoryEditForm')[0].reset();
 
                     $(function () {
                         var row = '<tr><td>' + data.CategoryName +
-                            '</td><td>' +
+                            '<tr><td>' +
                             '</td><td>Refresh to view options</td></tr>';
 
                         $('#Category-' + data.CategoryID).replaceWith(row);
                     });
+
+                    $("#PublisherEdit").dialog('close');
                 },
                 error: function (e) {
                     $('#MessageContent').html("<div class='alert alert-warning'>There was an error. Please try again or contact the site administrator.</div>");

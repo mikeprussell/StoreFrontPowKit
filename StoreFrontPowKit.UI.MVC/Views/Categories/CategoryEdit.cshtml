@@ -1,0 +1,19 @@
+﻿@model StoreFrontPowKit.DATA.EF.Category
+
+@using (Html.BeginForm("AjaxEdit", "Categories", FormMethod.Post, new { id = "CategoryEditForm" }))
+{
+    @Html.AntiForgeryToken()
+
+<table>
+    <tr>
+        @Html.HiddenFor(model => model.CategoryID)
+        <td>
+            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", style = "width:400px;" } })
+            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            <input type="button" id="saveUpdate" value="Update Category" class="btn btn-primary" />
+        </td>
+    </tr>
+</table>
+}
