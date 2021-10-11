@@ -13,7 +13,7 @@
 
                 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
                 {
-                    <button id="toggleCategoryCreate" class="btn btn-primary mb-2">Create</button>
+                    <button id="toggleCategoryCreate" class="btn btn-primary mb-2">Add New</button>
 
                     <div id="CategoryCreate">
                         @Html.Partial("CategoryCreate", new StoreFrontPowKit.DATA.EF.Category())
@@ -85,13 +85,13 @@
             $("#CategoryCreate").toggle();
         });
 
-        // AJAX - Form Submission
+        // AJAX - Create Form Submission
         $("#CategoryCreateForm").submit(function (e) {
             var formData = $(this).serializeArray();
             e.preventDefault();
 
             $.ajax({
-                url: "/Category/AjaxCreate",
+                url: "/Categories/AjaxCreate",
                 type: "POST",
                 data: formData,
                 dataType: "json",
@@ -152,9 +152,9 @@
                             '</td><td>Refresh to view options</td></tr>';
 
                         $('#Category-' + data.CategoryID).replaceWith(row);
+                        //$("#CategoryEdit").dialog('close');
                     });
 
-                    $("#PublisherEdit").dialog('close');
                 },
                 error: function (e) {
                     $('#MessageContent').html("<div class='alert alert-warning'>There was an error. Please try again or contact the site administrator.</div>");

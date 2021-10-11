@@ -4,23 +4,29 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="mb-4 mt-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-7">
+                <h2 class="py-2">@Html.DisplayFor(model => model.DepartmentName)</h2>
+                <h4>Details</h4>
+                <hr />
 
-<div>
-    <h4>Department</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DepartmentName)
-        </dt>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DepartmentName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DepartmentName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.DepartmentName)
+                    </dd>
 
-    </dl>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </dl>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) |
-    @Html.ActionLink("Back to List", "AllProducts")
-</p>
