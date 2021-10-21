@@ -177,7 +177,8 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult AjaxEdit(Category category)
         {
-            db.Categories.Add(category);
+            //db.Categories.Add(category);
+            db.Entry(category).State = EntityState.Modified;
             db.SaveChanges();
             return Json(category);
         }

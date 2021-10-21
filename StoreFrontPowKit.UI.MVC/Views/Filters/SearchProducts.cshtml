@@ -97,9 +97,6 @@
                 <div class="d-flex flex-row-reverse">
                     @Html.PagedListPager(Model, page => Url.Action("SearchProducts", new { page, searchString = ViewBag.SearchString }))
                 </div>
-
-                @*"#products"*@
-
             </div>
         </div>
     </div>

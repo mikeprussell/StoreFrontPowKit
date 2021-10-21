@@ -16,8 +16,9 @@ namespace StoreFrontPowKit.UI.MVC.Utilities
         /// <param name="fileName">Name of the base file</param>
         /// <param name="image">Image to be resized</param>
         /// <param name="maxImgSize">Largest size (width or height) to use for full-sized image</param>
+        /// <param name="maxProdSize">Largest size (width or height) to use for full-sized image</param>
         /// <param name="maxThumbSize">Largest size (width or height) to use for smaller, thumbnail image</param>
-        public static void ResizeImage(string savePath, string fileName, Image image, int maxImgSize, int maxThumbSize)
+        public static void ResizeImage(string savePath, string fileName, Image image, int maxImgSize, int maxThumbSize, int maxProdSize)
         {
             //Get new proportional image dimensions based off current image size and maxImgSize
             int[] newImageSizes = GetNewSize(image.Width, image.Height, maxImgSize);
@@ -26,12 +27,18 @@ namespace StoreFrontPowKit.UI.MVC.Utilities
             //save new image to path w/ filename
             newImage.Save(savePath + fileName);//calculate proportional size for thumbnail based on maxThumbSize
             int[] newThumbSizes = GetNewSize(newImage.Width, newImage.Height, maxThumbSize);
+
+            int[] newProdSizes = GetNewSize(newImage.Width, newImage.Height, maxProdSize);
             //Create thumbnail image
             Bitmap newThumb = DoResizeImage(newThumbSizes[0], newThumbSizes[1], image);
+
+            Bitmap newProd = DoResizeImage(newProdSizes[0], newProdSizes[1], image);
             //Save it with t_ prefix
             newThumb.Save(savePath + "t_" + fileName);
+
+            newProd.Save(savePath + "p_" + fileName);
             //Clean up service
-            newImage.Dispose(); newThumb.Dispose(); image.Dispose();
+            newImage.Dispose(); newThumb.Dispose(); newProd.Dispose(); image.Dispose();
         }
 
         /// <summary>
@@ -97,6 +104,7 @@ namespace StoreFrontPowKit.UI.MVC.Utilities
             //Create FileInfo objects for different versions of the file: full (and thumbnail in case it's an image)
             FileInfo baseFile = new FileInfo(path + fileName);
             FileInfo thumbImg = new FileInfo(path + "t_" + fileName);
+            FileInfo prodImg = new FileInfo(path + "p_" + fileName);
 
             //Check if designated file exists and, if so, delete it
             if (baseFile.Exists)
@@ -108,6 +116,11 @@ namespace StoreFrontPowKit.UI.MVC.Utilities
             if (thumbImg.Exists)
             {
                 thumbImg.Delete();
+            }
+
+            if (prodImg.Exists)
+            {
+                prodImg.Delete();
             }
         }
     }

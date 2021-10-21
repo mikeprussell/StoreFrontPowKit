@@ -105,11 +105,13 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
                         //max image size
                         int maxImageSize = 500;//value in pixels
 
+                        int maxProdSize = 250;
+
                         //max thumb size
                         int maxThumbSize = 100;
 
                         //Call the ImageUtility to do work
-                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize, maxProdSize);
 
                         #endregion
 
@@ -193,11 +195,13 @@ namespace StoreFrontPowKit.UI.MVC.Controllers
 
                         int maxImageSize = 500;
 
+                        int maxProdSize = 250;
+
                         int maxThumbSize = 100;
 
                         //Call the Image service method to resize our Image
                         //ResizeImage() will save 2 resized copies of our original image -- 1 full size, and 1 thumbnail
-                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize, maxProdSize);
                         #endregion
 
                         #region Delete the old image
